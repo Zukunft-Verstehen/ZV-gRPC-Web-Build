@@ -56,7 +56,6 @@ cmd.get(protocCmd,
     let jsFiles = tools.traverse(options.o, jsFilter)
     
     jsFiles.forEach((file) => {
-      console.log(file)
       tools.prependToFile(file, "/* eslint-disable */\n")
     })
   }
