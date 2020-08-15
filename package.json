@@ -1,0 +1,33 @@
+{
+  "name": "zv-grpc-web-build",
+  "version": "1.0.0",
+  "description": "CLI protoc wrapper for gRPC Web client generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zukunft-Verstehen/ZV-gRPC-Web-Build.git"
+  },
+  "keywords": [
+    "gRPC-Web",
+    "protoc",
+    "protobuf",
+    "gRPC",
+    "TypeScript",
+    "JavaScript"
+  ],
+  "author": "Tom Schamberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zukunft-Verstehen/ZV-gRPC-Web-Build/issues"
+  },
+  "homepage": "https://github.com/Zukunft-Verstehen/ZV-gRPC-Web-Build#readme",
+  "bin": "./index.js",
+  "dependencies": {
+    "node-cmd": "^3.0.0",
+    "protoc": "^1.0.4",
+    "yargs": "^15.4.1"
+  }
+}
