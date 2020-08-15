@@ -1,6 +1,6 @@
 {
   "name": "zv-grpc-web-build",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI protoc wrapper for gRPC Web client generation",
   "main": "index.js",
   "scripts": {
