@@ -2,6 +2,7 @@
 
 const yargs = require('yargs')
 const path = require('path')
+const fs = require('fs')
 const cmd = require('node-cmd')
 const tools = require('./tools')
 
@@ -44,6 +45,8 @@ let quotedFiles = files.map((file) => ('"' + file + '"'))
 const mode = options.b ? "grpcweb" : "grpcwebtext" 
 const protocCmd = 'protoc "-I=' + options.d + '" "--js_out=import_style=commonjs:' + options.o + '"' + 
   ' "--grpc-web_out=import_style=typescript,mode=' + mode + ':' + options.o + '" ' + quotedFiles.join(' ') 
+
+fs.mkdirSync(options.o, { recursive: true })
 
 cmd.get(protocCmd,
   function(err, data, stderr){
