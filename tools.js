@@ -11,7 +11,7 @@ const traverse = function(dirPath, filter, arrayOfFiles) {
   files.forEach(function(file) {
     let fullFile = path.join(dirPath, "/", file)
     if (fs.statSync(fullFile).isDirectory()) {
-      arrayOfFiles = getAllFiles(fullFile, filter, arrayOfFiles)
+      arrayOfFiles = traverse(fullFile, filter, arrayOfFiles)
     } else {
       if(filter(fullFile)){
       	arrayOfFiles.push(fullFile)
