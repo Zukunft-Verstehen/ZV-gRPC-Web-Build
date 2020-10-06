@@ -27,6 +27,7 @@
   "bin": "./index.js",
   "dependencies": {
     "protoc": "^1.0.4",
+    "protoc-gen-grpc-web": "^1.2.0",
     "yargs": "^15.4.1"
   }
 }
