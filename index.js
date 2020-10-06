@@ -3,8 +3,8 @@
 const yargs = require('yargs')
 const path = require('path')
 const fs = require('fs')
-const cmd = require('node-cmd')
 const tools = require('./tools')
+const protoc = require('protoc')
 
 const options = yargs
   .option('d', {
@@ -39,17 +39,19 @@ const options = yargs
 
 const fileFilter = (file) => options.e.includes(path.extname(file))
 
-let files = tools.traverse(options.d, fileFilter)
-let quotedFiles = files.map((file) => ('"' + file + '"'))
+const files = tools.traverse(options.d, fileFilter)
 
 const mode = options.b ? "grpcweb" : "grpcwebtext" 
-const protocCmd = 'protoc "-I=' + options.d + '" "--js_out=import_style=commonjs:' + options.o + '"' + 
-  ' "--grpc-web_out=import_style=typescript,mode=' + mode + ':' + options.o + '" ' + quotedFiles.join(' ') 
+const protocArgs = [
+	'-I=' + options.d,
+	'--js_out=import_style=commonjs:' + options.o,
+	'--grpc-web_out=import_style=typescript,mode=' + mode + ':' + options.o
+].concat(files) 
 
 fs.mkdirSync(options.o, { recursive: true })
 
-cmd.get(protocCmd,
-  function(err, data, stderr){
+protoc.protoc(protocArgs, null,
+  function(err, stdout, stderr){
     if(err){
       console.log('Protoc error: ', err)
       process.exit(1)
