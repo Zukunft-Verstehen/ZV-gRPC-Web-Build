@@ -2,6 +2,14 @@
 
 This project implements an NPM CLI wrapper tool for [protoc](https://www.npmjs.com/package/protoc). It can be used to generate TypeScript gRPC Web clients using NPM run scripts.
 
+## Requirements
+
+This package requires both the `protoc` binary and the `protoc-gen-grpc-web` plugin to be installed.
+
+See:
+- [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/)
+- [gRPC-Web Generator Plugin](https://github.com/grpc/grpc-web#code-generator-plugin)
+
 ## Usage
 
 ```

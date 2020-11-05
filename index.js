@@ -4,7 +4,9 @@ const yargs = require('yargs')
 const path = require('path')
 const fs = require('fs')
 const tools = require('./tools')
-const protoc = require('protoc')
+const cp = require("child_process");
+
+const protoc = "protoc"
 
 const options = yargs
   .option('d', {
@@ -50,7 +52,7 @@ const protocArgs = [
 
 fs.mkdirSync(options.o, { recursive: true })
 
-protoc.protoc(protocArgs, null,
+cp.execFile(protoc, protocArgs, null,
   function(err, stdout, stderr){
     if(err){
       console.log('Protoc error: ', err)
